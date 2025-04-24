@@ -144,7 +144,6 @@ func TestParseRawString(t *testing.T) {
 		f(`"x\\y"tail`, `x\\y`, "tail")
 		f(`"\\\"й\n\"я"tail`, `\\\"й\n\"я`, "tail")
 		f(`"\\\\\\\\"tail`, `\\\\\\\\`, "tail")
-
 	})
 
 	t.Run("error", func(t *testing.T) {
@@ -324,7 +323,7 @@ func TestValueGetTyped(t *testing.T) {
 		t.Fatalf("unexpected value; got %d; want %d", n, 123)
 	}
 	n64 := v.GetInt64("foo")
-	if n != 123 {
+	if n64 != 123 {
 		t.Fatalf("unexpected value; got %d; want %d", n64, 123)
 	}
 	un := v.GetUint("foo")
@@ -332,7 +331,7 @@ func TestValueGetTyped(t *testing.T) {
 		t.Fatalf("unexpected value; got %d; want %d", un, 123)
 	}
 	un64 := v.GetUint64("foo")
-	if un != 123 {
+	if un64 != 123 {
 		t.Fatalf("unexpected value; got %d; want %d", un64, 123)
 	}
 	n = v.GetInt("bar")
@@ -340,16 +339,16 @@ func TestValueGetTyped(t *testing.T) {
 		t.Fatalf("unexpected non-zero value; got %d", n)
 	}
 	n64 = v.GetInt64("bar")
-	if n != 0 {
+	if n64 != 0 {
 		t.Fatalf("unexpected non-zero value; got %d", n64)
 	}
 	un = v.GetUint("bar")
-	if n != 0 {
+	if un != 0 {
 		t.Fatalf("unexpected non-zero value; got %d", un)
 	}
 	un64 = v.GetUint64("bar")
-	if n != 0 {
-		t.Fatalf("unexpected non-zero value; got %d", n64)
+	if un64 != 0 {
+		t.Fatalf("unexpected non-zero value; got %d", un64)
 	}
 	f := v.GetFloat64("foo")
 	if f != 123.0 {
@@ -369,7 +368,7 @@ func TestValueGetTyped(t *testing.T) {
 	}
 	sb := v.GetStringBytes("bar")
 	if string(sb) != "433" {
-		t.Fatalf("unexpected value; got %q; want %q", sb, "443")
+		t.Fatalf("unexpected value; got %q; want %q", sb, "433")
 	}
 	sb = v.GetStringBytes("foo")
 	if sb != nil {
@@ -1197,7 +1196,6 @@ func TestParserParse(t *testing.T) {
 		if ss != s {
 			t.Fatalf("unexpected string representation for object; got\n%q; want\n%q", ss, s)
 		}
-
 	})
 }
 
